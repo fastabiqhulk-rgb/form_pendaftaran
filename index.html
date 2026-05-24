@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Pendaftaran</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(99,102,241,0.15), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(16,185,129,0.15), transparent 30%),
+        #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #0f172a;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: 0 20px 50px rgba(15,23,42,0.08);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eef2ff;
+      color: #4338ca;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 34px;
+      font-size: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: #0f172a;
+      line-height: 1.7;
+    }
+
+    .arabic {
+      font-family: 'Noto Naskh Arabic', serif;
+      direction: rtl;
+      font-size: 20px;
+      display: block;
+      margin-top: 4px;
+      color: #1e293b;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1.5px solid #dbe4f0;
+      background: white;
+      font-size: 15px;
+      transition: all 0.25s ease;
+      outline: none;
+      color: #0f172a;
+    }
+
+    input:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
+    }
+
+    .btn {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-top: 10px;
+      box-shadow: 0 14px 30px rgba(79,70,229,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(79,70,229,0.3);
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      display: none;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 26px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px;
+      }
+
+      .card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .arabic {
+        font-size: 18px;
+      }
+
+      input {
+        padding: 15px;
+      }
+
+      .btn {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="badge">
+        Registration Form
+      </div>
+
+      <h1>
+        Form Pendaftaran
+      </h1>
+
+      <p class="subtitle">
+        Silakan isi data dengan benar.<br>
+        Please fill out the form correctly.<br>
+        يرجى تعبئة البيانات بشكل صحيح.
+      </p>
+
+      <form id="registrationForm">
+
+        <div class="form-group">
+          <label>
+            Nama / Name
+            <span class="arabic">الاسم</span>
+          </label>
+          <input type="text" name="nama" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Tempat dan tanggal lahir / Place and date of birth
+            <span class="arabic">مكان وتاريخ الميلاد</span>
+          </label>
+          <input type="text" name="lahir" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Kewarganegaraan / Nationality
+            <span class="arabic">الجنسية</span>
+          </label>
+          <input type="text" name="kewarganegaraan" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Negara tempat tinggal / Country of residence
+            <span class="arabic">بلد الإقامة</span>
+          </label>
+          <input type="text" name="negara" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Jumlah hafalan Al-Qur'an / Amount of Qur'an memorization
+            <span class="arabic">مقدار حفظ القرآن الكريم</span>
+          </label>
+          <input type="text" name="hafalan" placeholder="Contoh: 5 Juz" required>
+        </div>
+
+        <button class="btn" type="submit">
+          Kirim Pendaftaran
+        </button>
+
+        <div class="status" id="status"></div>
+
+      </form>
+
+      <div class="footer">
+        © 2026 Fastabiqul Khairat
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+
+    // =========================
+    // GANTI URL DI BAWAH DENGAN URL GOOGLE APPS SCRIPT KAMU
+    // =========================
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwjhSP4A5lkRb82sIUSZGfh1Cof9prdw1XxtCy3Bk2SS35x8gruyf5FcqkIfhvDm9lJkw/exec';
+
+    const form = document.getElementById('registrationForm');
+    const statusBox = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const button = form.querySelector('button');
+      button.disabled = true;
+      button.innerText = 'Mengirim...';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          statusBox.style.display = 'block';
+          statusBox.className = 'status success';
+          statusBox.innerHTML = `
+            Data berhasil dikirim.<br>
+            Registration submitted successfully.<br>
+            تم إرسال التسجيل بنجاح.
+          `;
+
+          form.reset();
+        } else {
+          throw new Error('Gagal mengirim');
+        }
+      } catch (error) {
+        statusBox.style.display = 'block';
+        statusBox.className = 'status error';
+        statusBox.innerHTML = `
+          Terjadi kesalahan saat mengirim data.<br>
+          An error occurred while submitting data.<br>
+          حدث خطأ أثناء إرسال البيانات.
+        `;
+      }
+
+      button.disabled = false;
+      button.innerText = 'Kirim Pendaftaran';
+    });
+
+  </script>
+
+</body>
+</html>
+
+<!--
+====================================================
+CARA MENYAMBUNGKAN KE GOOGLE SHEET
+====================================================
+
+1. Buat Google Sheet baru
+
+2. Buka:
+Extensions > Apps Script
+
+3. Hapus semua code lalu ganti dengan ini:
+
+----------------------------------------------------
+
+function doPost(e) {
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
+
+  sheet.appendRow([
+    new Date(),
+    e.parameter.nama,
+    e.parameter.lahir,
+    e.parameter.kewarganegaraan,
+    e.parameter.negara,
+    e.parameter.hafalan
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ result: 'success' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+----------------------------------------------------
+
+4. Klik Deploy
+
+5. New Deployment
+
+6. Pilih:
+- Type: Web App
+
+7. Atur:
+- Execute as: Me
+- Who has access: Anyone
+
+8. Klik Deploy
+
+9. Copy URL Web App
+
+10. Paste ke:
+
+const scriptURL = 'URL_APPS_SCRIPT_KAMU';
+
+====================================================
+CARA HOSTING GRATIS
+====================================================
+
+Bisa upload ke:
+
+- Netlify
+- Vercel
+- GitHub Pages
+
+Atau cukup buka file HTML langsung di browser.
+
+====================================================
+-->
