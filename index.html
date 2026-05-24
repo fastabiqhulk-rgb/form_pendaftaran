@@ -270,52 +270,68 @@
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxlWw6IReDppImH-r6ex34RWt_VuvCBPhnJqQDKX3UekgPmk9Jm5Nrv4cRyc6McqxiTBQ/exec';
 
-    const form = document.getElementById('registrationForm');
-    const statusBox = document.getElementById('status');
+const form = document.getElementById('registrationForm');
+const statusBox = document.getElementById('status');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+form.addEventListener('submit', async (e) => {
 
-      const button = form.querySelector('button');
-      button.disabled = true;
-      button.innerText = 'Mengirim...';
+  e.preventDefault();
 
-      const formData = new FormData(form);
+  const button = form.querySelector('button');
 
-      try {
-       const response = await fetch(scriptURL, {
-  method: 'POST',
-  body: formData,
-  mode: 'cors'
-});
-        });
+  button.disabled = true;
+  button.innerText = 'Mengirim...';
 
-        if (response.ok) {
-          statusBox.style.display = 'block';
-          statusBox.className = 'status success';
-          statusBox.innerHTML = `
-            Data berhasil dikirim.<br>
-            Registration submitted successfully.<br>
-            تم إرسال التسجيل بنجاح.
-          `;
+  const data = {
+    nama: form.nama.value,
+    lahir: form.lahir.value,
+    kewarganegaraan: form.kewarganegaraan.value,
+    negara: form.negara.value,
+    hafalan: form.hafalan.value
+  };
 
-          form.reset();
-        } else {
-          throw new Error('Gagal mengirim');
-        }
-      } catch (error) {
-        statusBox.style.display = 'block';
-        statusBox.className = 'status error';
-        statusBox.innerHTML = `
-          Terjadi kesalahan saat mengirim data.<br>
-          An error occurred while submitting data.<br>
-          حدث خطأ أثناء إرسال البيانات.
-        `;
-      }
+  try {
 
-      button.disabled = false;
-      button.innerText = 'Kirim Pendaftaran';
+    const response = await fetch(scriptURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
+
+    const result = await response.json();
+
+    statusBox.style.display = 'block';
+    statusBox.className = 'status success';
+
+    statusBox.innerHTML = `
+      Data berhasil dikirim.<br>
+      Registration submitted successfully.<br>
+      تم إرسال التسجيل بنجاح.
+    `;
+
+    form.reset();
+
+  } catch (error) {
+
+    console.error(error);
+
+    statusBox.style.display = 'block';
+    statusBox.className = 'status error';
+
+    statusBox.innerHTML = `
+      Terjadi kesalahan saat mengirim data.<br>
+      An error occurred while submitting data.<br>
+      حدث خطأ أثناء إرسال البيانات.
+    `;
+
+  }
+
+  button.disabled = false;
+  button.innerText = 'Kirim Pendaftaran';
+
+});
 
   </script>
 
