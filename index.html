@@ -283,9 +283,11 @@
       const formData = new FormData(form);
 
       try {
-        const response = await fetch(scriptURL, {
-          method: 'POST',
-          body: formData
+       const response = await fetch(scriptURL, {
+  method: 'POST',
+  body: formData,
+  mode: 'cors'
+});
         });
 
         if (response.ok) {
